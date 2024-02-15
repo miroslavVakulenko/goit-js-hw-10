@@ -2,6 +2,12 @@ import flatpickr from 'flatpickr';
 
 const input = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector('button[data-start]');
+const dataDays = document.querySelector('.timer [data-days]');
+const dataHours = document.querySelector('.timer [data-hours]');
+const dataMinutes = document.querySelector('.timer [data-minutes]');
+const dataSeconds = document.querySelector('.timer [data-seconds]');
+
+console.log(dataHours, dataDays);
 
 let selectedUserDate = {};
 const options = {
