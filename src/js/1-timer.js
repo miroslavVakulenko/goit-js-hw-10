@@ -8,6 +8,7 @@ const startBtn = document.querySelector('button[data-start]');
 let selectedUserDate = {};
 
 startBtn.setAttribute('disabled', '');
+
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -33,8 +34,6 @@ function updateStartButtonState(selectedUserDate) {
   }
 }
 flatpickr(input, options);
-
-// updateStartButtonState(selectedUserDate);
 
 // якщо updateStartButtonState() пропускає нас то слухаємо кнопку і виводимо в консоль обрану дату
 startBtn.addEventListener('click', evt => {
@@ -91,6 +90,11 @@ const addLeadingZero = (days, hours, minutes, seconds) => {
   dataMinutes.textContent = minutes.toString().padStart(2, '0');
   dataSeconds.textContent = seconds.toString().padStart(2, '0');
 };
+
+//призавантаженні сторінки таймер по 00
+document.addEventListener('DOMContentLoaded', () => {
+  addLeadingZero(0, 0, 0, 0);
+});
 
 console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
 console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
