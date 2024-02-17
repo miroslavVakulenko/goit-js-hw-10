@@ -5,8 +5,9 @@ import iziToast from 'izitoast';
 
 const input = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector('button[data-start]');
-
 let selectedUserDate = {};
+
+startBtn.setAttribute('disabled', '');
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -21,7 +22,7 @@ const options = {
 function updateStartButtonState(selectedUserDate) {
   const currentDate = new Date();
   currentDate.setHours(0, 0, 0, 0); // Задаємо час на 00:00:00 для порівняння з датою
-  if (selectedUserDate < currentDate) {
+  if (selectedUserDate < currentDate || !selectedUserDate) {
     startBtn.disabled = true;
     //iziToast notification about error
     iziToast.show({
@@ -31,6 +32,9 @@ function updateStartButtonState(selectedUserDate) {
     startBtn.disabled = false;
   }
 }
+flatpickr(input, options);
+
+// updateStartButtonState(selectedUserDate);
 
 // якщо updateStartButtonState() пропускає нас то слухаємо кнопку і виводимо в консоль обрану дату
 startBtn.addEventListener('click', evt => {
@@ -54,8 +58,6 @@ function displayTimeRemaining(duration) {
     }, 1000);
   }
 }
-
-flatpickr(input, options);
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
