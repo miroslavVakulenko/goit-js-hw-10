@@ -1,6 +1,7 @@
 'use strict';
 
 import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 const popupHandler = (delay, state) => {
   const promise = new Promise((res, rej) => {
